@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/fancygrid/client/fancy.min.css">
+    <script src="/node_modules/fancygrid/client/fancy.min.js"></script>
+    <script src="/node_modules/axios/dist/axios.js"></script>
+    <title>fancygrid</title>
+</head>
+<body>
+    <div><button><a href="/post">新增</a></button></div>
+    <input type="text" value={{student}} style="display: none;" id="studentData">
+    <div style="display: flex;justify-content: center;">
+        <div id="grid" style="width: 500px;"></div>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    let data = JSON.parse(document.querySelector('#studentData').value)
+    new FancyGrid({
+      renderTo: 'grid',
+      width: 500,
+      height: 'auto',
+      data: data,  
+      columns: [{
+        index: 'name',
+        title: '姓名',    
+        type: 'string'
+      },{
+        type: 'string',
+        index: 'age',
+        title: '年龄'
+      },{
+        type: 'string',
+        index: 'hobby',
+        title: '爱好'
+      },{
+        type: 'string',
+        index: 'nation',
+        title: '民族'
+      },{
+        type: 'string',
+        index: 'specialty',
+        title: '专业'
+      }]
+    });
+    
+    });
+    // function post1 () {
+    //     axios({
+    //         method:'get',
+    //         url:'/post'
+    //     }).then((res)=>{
+    //         let url = window.location.origin + '/post.html'
+    //         window.open(url,'_self')
+    //     })
+    // }
+    </script>
+</html>
